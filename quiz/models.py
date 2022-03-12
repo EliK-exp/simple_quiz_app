@@ -10,9 +10,7 @@ class Question(models.Model):
     question_text = models.CharField(max_length=255)
     # category = models.ManyToManyField(Category)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
-
-# is_multi_answer = models.BooleanField(default=False)
+    # is_multi_answer = models.BooleanField(default=False)
 
 
 class Answer(models.Model):
