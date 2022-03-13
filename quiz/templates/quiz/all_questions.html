@@ -5,6 +5,19 @@
     <title>All Questions</title>
 </head>
 <body>
-All Questions
+<h1>All Questions(and their category):</h1>
+<ul>
+    {% for question in all_questions %}
+    <li>
+        {{ question.question_text }} ({{ question.category }})
+        <ol>
+            {% for answer in question.answer_set.all %}
+            <li>{{ answer.answer_text }} ({{ answer.is_answer }})</li>
+            {% endfor %}
+        </ol>
+    </li>
+    {% endfor %}
+</ul>
+<a href="">Add Question</a>
 </body>
 </html>

@@ -5,6 +5,16 @@
     <title>All Categories</title>
 </head>
 <body>
-All Categories
+<h1>All Categories:</h1>
+<ul>
+    {% for category in all_categories %}
+    <li>
+        <a href="{% url 'category_detail' category.id %}">{{ category.name }}, number of questions: {{ category.question_set.all.count }} ,
+            Category ID: {{ category.id }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="">Add Category</a>
+
 </body>
 </html>
