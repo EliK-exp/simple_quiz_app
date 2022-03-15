@@ -70,6 +70,7 @@ def add_question(request):
                         answer.answer_text = answer_text
                         answer.is_answer = True
                         answer.question = new_question
+                        # answer.clean() # if use clean(),it does a model-wide validation and raises an exception(here we must use transaction!!)
                     else:
                         answer_text = str(form_data[str(key)])
                         answer = Answer()

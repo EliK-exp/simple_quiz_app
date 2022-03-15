@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 
 class CategoryForm(forms.Form):
-    category_name = forms.CharField(label='category name', max_length=100)
+    category_name = forms.CharField(label='Category Name ', max_length=100)
 
 
 class QuestionForm(forms.Form):

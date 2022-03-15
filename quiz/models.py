@@ -20,7 +20,6 @@ class Question(models.Model):
         return self.question_text
 
 
-# check if the question has any other answers! A question must have only a single answer.
 def validate_answer_text(answer_text):
     print('validating...')
     if str(answer_text)[0].islower():

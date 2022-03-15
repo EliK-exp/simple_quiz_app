@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}">
     <title>Home</title>
 </head>
 <body>
-<h1>Home</h1>
-<a href="{% url 'all_categories' %}">all categories</a>
-<a href="{% url 'all_questions' %}">all questions</a>
+<a href="{% url 'all_categories' %}">Questions Based on Categories</a>
+<a href="{% url 'all_questions' %}">All Questions</a>
 </body>
 </html>

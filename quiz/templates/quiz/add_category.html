@@ -1,14 +1,19 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/add_category.css' %}">
     <title>Add Quiz</title>
 </head>
 <body>
-<form action="/quiz/add_category/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    <form action="/quiz/add_category/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
 </body>
 </html>

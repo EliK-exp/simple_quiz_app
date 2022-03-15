@@ -1,26 +1,44 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/questions.css' %}">
+
     <title>Category Detail</title>
 </head>
 <body>
-<h1>{{ the_category }}</h1>
-<a href="{% url 'delete_category' the_category.id %}">Delete this category</a>
-<h2>Number of questions: {{ the_category.question_set.all.count }}</h2>
-<h2>questions:</h2>
-<ul>
+
+<a href="{% url 'delete_category' the_category.id %}">Delete "{{ the_category }}" category</a>
+
+<div class="container">
     {% for question in category_questions %}
-    <li>
-        {{ question.question_text }}
-        <ol>
-            {% for answer in question.answer_set.all %}
-            <li>{{ answer.answer_text }}</li>
-            {% endfor %}
-        </ol>
-    </li>
+    <div class="questionCard">
+        <div class="questionText">{{ question.question_text }}?</div>
+        <div class="choicesContainer">
+            <ol>
+                {% for answer in question.answer_set.all %}
+                <li>{{ answer.answer_text }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
     {% endfor %}
-</ul>
+</div>
+
+
+<!--<ul>-->
+<!--    {% for question in category_questions %}-->
+<!--    <li>-->
+<!--        {{ question.question_text }}-->
+<!--        <ol>-->
+<!--            {% for answer in question.answer_set.all %}-->
+<!--            <li>{{ answer.answer_text }}</li>-->
+<!--            {% endfor %}-->
+<!--        </ol>-->
+<!--    </li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
 
 </body>
 </html>

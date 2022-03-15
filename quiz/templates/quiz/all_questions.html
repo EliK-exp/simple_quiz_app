@@ -1,23 +1,27 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/questions.css' %}">
     <title>All Questions</title>
 </head>
 <body>
-<h1>All Questions(and their category):</h1>
-<ul>
+<div class="container">
     {% for question in all_questions %}
-    <li>
-        {{ question.question_text }} ({{ question.category }})
-        <ol>
-            {% for answer in question.answer_set.all %}
-            <li>{{ answer.answer_text }} ({{ answer.is_answer }})</li>
-            {% endfor %}
-        </ol>
-    </li>
+    <div class="questionCard">
+        <div class="questionText">{{ question.question_text }}?</div>
+        <div class="choicesContainer">
+            <ol>
+                {% for answer in question.answer_set.all %}
+                <li>{{ answer.answer_text }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
     {% endfor %}
-</ul>
-<a href="{% url 'add_question' %}">Add Question</a>
+    <a class="addQuestion" href="{% url 'add_question' %}">Add Question</a>
+</div>
+
 </body>
 </html>

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/categories.css' %}">
     <title>All Categories</title>
 </head>
 <body>
-<h1>All Categories:</h1>
-<ul>
+
+<div class="container">
     {% for category in all_categories %}
-    <li>
-        <a href="{% url 'category_detail' category.id %}">{{ category.name }}, number of questions: {{ category.question_set.all.count }} ,
-            Category ID: {{ category.id }}</a>
-    </li>
+    <a href="{% url 'category_detail' category.id %}" class="categoryCard">
+        <div class="categoryName">{{ category.name }}</div>
+        <p>No. questions: {{ category.question_set.all.count }}</p>
+    </a>
     {% endfor %}
-</ul>
-<a href="{% url 'add_category' %}">Add Category</a>
+    <a href="{% url 'add_category' %}" class="addCategory">Add Category</a>
+</div>
+
 
 </body>
 </html>
