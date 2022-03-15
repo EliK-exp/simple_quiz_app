@@ -7,7 +7,7 @@
 <body>
 <h1>{{ the_category }}</h1>
 <a href="{% url 'delete_category' the_category.id %}">Delete this category</a>
-<h2>Number of questions: </h2>
+<h2>Number of questions: {{ the_category.question_set.all.count }}</h2>
 <h2>questions:</h2>
 <ul>
     {% for question in category_questions %}

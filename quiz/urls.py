@@ -7,4 +7,6 @@ urlpatterns = [
     path('all_questions/', views.all_questions, name='all_questions'),
     path('all_categories/<int:category_id>/', views.category_detail, name='category_detail'),
     path('delete_category/<int:category_id>/', views.delete_category, name='delete_category'),
+    path('add_category/', views.add_category, name='add_category'),
+    path('add_question/', views.add_question, name='add_question'),
 ]
