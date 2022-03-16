@@ -23,25 +23,54 @@ body {
   align-items: center;
   justify-content: center;
 }
-.container form label{
+.container form{
+  position: relative;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container form p{
+  position: relative;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.container form p label{
 position:relative;
 top:3px;
 color:white;
 font-size:1.6rem;
 padding:10px;
 }
-.container form input{
+.container form p input{
+position:relative;
 padding:10px;
 border-radius:20px;
 border-style:solid;
 border-width:0px;
 }
-.container form #submit-btn{
-padding:15px;
-margin:10px;
-border-radius:40px;
+.container form p select{
+position:relative;
+top:3px;
+font-size:1rem;
+padding:10px;
+margin:0px;
+border-radius:10px;
 border-style:solid;
 border-width:0px;
-color:aliceblue;
+}
+.container #submit-btn{
+position:relative;
+padding:20px;
+margin:40px;
+font-size:1.2rem;
+border-radius:20px;
+border-style:solid;
+border-width:0px;
 background-color: rgba(29, 27, 27, 0.671);
+color:aliceblue;
 }

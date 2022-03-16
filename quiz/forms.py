@@ -12,12 +12,12 @@ class QuestionForm(forms.Form):
     CATEGORIES = [(category, str(category)) for category in list(categories)]
     ANSWER_CANDIDATES = [(1, '1'), (2, '2'), (3, '3'), (4, '4')]
 
-    question_text = forms.CharField(label='question', max_length=255)
-    choice_one = forms.CharField(label='choice 1', max_length=255)
-    choice_two = forms.CharField(label='choice 2', max_length=255)
-    choice_three = forms.CharField(label='choice 3', max_length=255)
-    choice_four = forms.CharField(label='choice 4', max_length=255)
-    category = forms.ChoiceField(label='category', choices=CATEGORIES)
+    question_text = forms.CharField(label='Question', max_length=255)
+    choice_one = forms.CharField(label='Choice 1', max_length=255)
+    choice_two = forms.CharField(label='Choice 2', max_length=255)
+    choice_three = forms.CharField(label='Choice 3', max_length=255)
+    choice_four = forms.CharField(label='Choice 4', max_length=255)
+    category = forms.ChoiceField(label='Category', choices=CATEGORIES)
 
     # Check if there is only one answer, not less not more! Also checks if a field contains just #answer and raise an exception.
     def clean(self):

@@ -10,7 +10,7 @@
 <div class="container">
     {% for question in all_questions %}
     <div class="questionCard">
-        <div class="questionText">{{ question.question_text }}?</div>
+        <div class="questionText">{{ question.question_text }}? ({{ question.category }})</div>
         <div class="choicesContainer">
             <ol>
                 {% for answer in question.answer_set.all %}
