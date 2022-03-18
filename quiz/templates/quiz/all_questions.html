@@ -8,20 +8,39 @@
 </head>
 <body>
 <div class="container">
-    {% for question in all_questions %}
-    <div class="questionCard">
-        <div class="questionText">{{ question.question_text }}? ({{ question.category }})</div>
-        <div class="choicesContainer">
-            <ol>
-                {% for answer in question.answer_set.all %}
-                <li>{{ answer.answer_text }}</li>
-                {% endfor %}
-            </ol>
+    {{ data|json_script:"js_1" }}
+    <form action="/quiz/all_questions/" method="post">
+        {% csrf_token %}
+        {% for question in all_questions %}
+        <div class="questionCard">
+            <div class="questionText">{{ question.question_text }}? ({{ question.category }})</div>
+            <div class="choicesContainer">
+                <ol>
+                    {% for choice in question.answer_set.all %}
+                    <li id="{{ choice.id }}">
+                        <label for="choice_{{ choice.id }}">{{ choice.answer_text }}
+                            {{choice.is_answer}}</label>
+                        {% if not quiz_finished %}
+                        <input type="radio" id="choice_{{ choice.id }}" name="choice_{{ question }}"
+                               value="{{ choice.id }}" required/>
+                        {% endif %}
+
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
+        {% if not quiz_finished %}
+        <input type="submit" value="Submit" id="submit-btn">
+        {% endif %}
+    </form>
+
     <a class="addQuestion" href="{% url 'add_question' %}">Add Question</a>
 </div>
-
+{% if quiz_finished %}
+<div class="result"> Result : {{ result }}%</div>
+{% endif %}
 </body>
+<script src="{% static 'quiz/js.js' %}"></script>
 </html>

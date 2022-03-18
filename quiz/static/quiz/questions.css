@@ -23,7 +23,15 @@ body {
   align-items: center;
   justify-content: center;
 }
-.container .questionCard {
+.container form{
+position:relative;
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+.container form .questionCard {
   position: relative;
   width: 90%;
   display: flex;
@@ -36,31 +44,39 @@ body {
   text-decoration: none;
   overflow: hidden;
 }
-.container .questionCard .questionText {
+.container form .questionCard .questionText {
   position: relative;
   color: aliceblue;
   padding: 20px;
   font-size: 1.2rem;
 }
-.container .questionCard .choicesContainer {
+.container form .questionCard .choicesContainer {
   position: relative;
-  width: 120%;
+  width: 100%;
   color: aliceblue;
   padding: 20px;
   padding-bottom: 30px;
   background-color: rgba(24, 24, 24, 0.527);
 }
-.container .questionCard .choicesContainer ol {
+.container form .questionCard .choicesContainer ol {
   position: relative;
+  left:50px;
+  width:100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
-.container .questionCard .choicesContainer ol li {
+.container form .questionCard .choicesContainer ol li {
   position: relative;
   margin: 6px;
+  padding:6px;
+  background-color: rgba(138, 104, 125, 0.767);
+  border-radius: 10px;
+  cursor:pointer;
 }
+.container form .questionCard .choicesContainer ol li label{cursor:pointer}
+.container form .questionCard .choicesContainer ol li input{cursor:pointer}
 .container .addQuestion {
   position: fixed;
   top: 10px;
@@ -70,4 +86,25 @@ body {
   padding: 20px;
   border-radius: 30px;
   color: aliceblue;
+}
+.container form #submit-btn{
+  position: relative;
+  width:40%;
+  background-color: rgba(39, 38, 38, 0.616);
+  border-radius: 20px;
+  color: aliceblue;
+  padding: 30px;
+  margin: 20px;
+  font-size: larger;
+  border-width:0px;
+  cursor:pointer;
+}
+.result {
+  position: relative;
+  background-color: rgba(39, 38, 38, 0.616);
+  border-radius: 20px;
+  color: aliceblue;
+  padding: 30px;
+  margin: 20px;
+  font-size: larger;
 }

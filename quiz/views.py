@@ -16,8 +16,20 @@ def all_categories(request):
 
 
 def all_questions(request):
+    quiz_finished = False
     questions = Question.objects.select_related('category').prefetch_related('answer_set').all()
-    context = {'all_questions': questions}
+    context = {'all_questions': questions, 'quiz_finished': quiz_finished}
+    if request.method == 'POST':
+        quiz_finished = True
+        user_choices = request.POST.dict()
+        user_choices = [user_choices[str(key)] for key in user_choices if str(key).startswith('choice_')]
+        answer_ids = [str(answer.id) for answer in Answer.objects.filter(is_answer=True).all()]
+        right_answers = answer_ids
+        wrong_answers = [answer for answer in user_choices if answer not in right_answers]
+        data = {'right_answers': right_answers, 'wrong_answers': wrong_answers}
+        print(data)
+        result = 100 * (1.0 - (len(wrong_answers) / len(right_answers)))
+        context = {'all_questions': questions, 'quiz_finished': quiz_finished, 'data': data, 'result': result}
     return render(request, 'quiz/all_questions.html', context=context)
 
 
