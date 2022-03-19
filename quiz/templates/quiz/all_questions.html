@@ -12,7 +12,7 @@
 {% block content %}
 <div class="container">
     {{ data|json_script:"js_1" }}
-    <form action="/quiz/all_questions/" method="post">
+    <form action="{% url 'quiz:all_questions' %}" method="post">
         {% csrf_token %}
         {% for question in all_questions %}
         <div class="questionCard">

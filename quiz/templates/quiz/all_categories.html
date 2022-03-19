@@ -12,7 +12,7 @@
 {% block content %}
 <div class="container">
     {% for category in all_categories %}
-    <a href="{% url 'category_detail' category.id %}" class="categoryCard">
+    <a href="{% url 'quiz:category_detail' category.id %}" class="categoryCard">
         <div class="categoryName">{{ category.name }}</div>
         <p>No. questions: {{ category.question_set.all.count }}</p>
     </a>

@@ -11,7 +11,7 @@
 <body>
 {% block content %}
 <div class="container">
-    <form action="/quiz/add_category/" method="post">
+    <form action="{% url 'quiz:add_category' %}" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit" id="submit-btn">

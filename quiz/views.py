@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Question, Answer, Category
 from .forms import CategoryForm, QuestionForm
 
@@ -35,7 +35,7 @@ def all_questions(request):
 
 def category_detail(request, category_id):
     quiz_finished = False
-    the_category = Category.objects.filter(id=category_id).get()
+    the_category = get_object_or_404(klass=Category, id=category_id)
     category_questions = Question.objects.select_related('category').prefetch_related('answer_set').filter(
         category=the_category)
     context = {'the_category': the_category, 'category_questions': category_questions, 'quiz_finished': quiz_finished}
@@ -60,7 +60,7 @@ def category_detail(request, category_id):
 def delete_category(request, category_id):
     the_category = Category.objects.filter(id=category_id).get()
     the_category.delete()
-    return redirect('all_categories')
+    return redirect('quiz:all_categories')
 
 
 def add_category(request):
@@ -72,7 +72,7 @@ def add_category(request):
             form_data = form.cleaned_data
             the_new_category = Category(name=form_data['category_name'])
             the_new_category.save()
-            return redirect('all_categories')
+            return redirect('quiz:all_categories')
     else:
         form = CategoryForm()
     context = {'current_value': 'type here', 'form': form}
