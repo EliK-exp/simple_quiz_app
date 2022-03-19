@@ -1,44 +1,53 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
+{% block head %}
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/questions.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
     <title>Category Detail</title>
 </head>
+{% endblock %}
 <body>
-
+{% block content %}
+{% if not quiz_finished %}
 <a href="{% url 'delete_category' the_category.id %}">Delete "{{ the_category }}" category</a>
-
+{% endif %}
 <div class="container">
-    {% for question in category_questions %}
-    <div class="questionCard">
-        <div class="questionText">{{ question.question_text }}?</div>
-        <div class="choicesContainer">
-            <ol>
-                {% for answer in question.answer_set.all %}
-                <li>{{ answer.answer_text }}</li>
-                {% endfor %}
-            </ol>
+    {{ data|json_script:"js_1" }}
+    <form action="{% url 'category_detail' the_category.id %}" method="post">
+        {% csrf_token %}
+        {% for question in category_questions %}
+        <div class="questionCard">
+            <div class="questionText">{{ question.question_text }}? ({{ question.category }})</div>
+            <div class="choicesContainer">
+                <ol>
+                    {% for choice in question.answer_set.all %}
+                    <li id="{{ choice.id }}">
+                        <label for="choice_{{ choice.id }}">{{ choice.answer_text }}
+                            {{choice.is_answer}}</label>
+                        {% if not quiz_finished %}
+                        <input type="radio" id="choice_{{ choice.id }}" name="choice_{{ question }}"
+                               value="{{ choice.id }}" required/>
+                        {% endif %}
+
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
+        {% if not quiz_finished %}
+        <input type="submit" value="Submit" id="submit-btn">
+        {% endif %}
+    </form>
+
 </div>
-
-
-<!--<ul>-->
-<!--    {% for question in category_questions %}-->
-<!--    <li>-->
-<!--        {{ question.question_text }}-->
-<!--        <ol>-->
-<!--            {% for answer in question.answer_set.all %}-->
-<!--            <li>{{ answer.answer_text }}</li>-->
-<!--            {% endfor %}-->
-<!--        </ol>-->
-<!--    </li>-->
-<!--    {% endfor %}-->
-<!--</ul>-->
-
+{% if quiz_finished %}
+<div class="result"> Result : {{ result }}%</div>
+{% endif %}
+{% endblock %}
 </body>
-</html>
+{% block script %}
+<script src="{% static 'quiz/js.js' %}"></script>
+{% endblock %}

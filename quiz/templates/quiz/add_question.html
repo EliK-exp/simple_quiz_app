@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
+{% block head %}
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/add_question.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
     <title>Add Question</title>
 </head>
+{% endblock %}
 <body>
+{% block content %}
 <div class="container">
     <form action="/quiz/add_question/" method="post">
         {% csrf_token %}
@@ -15,6 +18,5 @@
     </form>
 </div>
 
-
+{% endblock %}
 </body>
-</html>

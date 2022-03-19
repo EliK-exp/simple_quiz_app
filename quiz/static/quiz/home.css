@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
   background: linear-gradient(45deg, rgb(205, 205, 253), rgb(107, 24, 107));
 }
-a {
+.router {
   position: relative;
   text-decoration: none;
   margin: 20px;

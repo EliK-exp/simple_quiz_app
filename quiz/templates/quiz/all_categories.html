@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
+{% block head %}
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/categories.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
     <title>All Categories</title>
 </head>
+{% endblock %}
 <body>
-
+{% block content %}
 <div class="container">
     {% for category in all_categories %}
     <a href="{% url 'category_detail' category.id %}" class="categoryCard">
@@ -15,9 +17,6 @@
         <p>No. questions: {{ category.question_set.all.count }}</p>
     </a>
     {% endfor %}
-    <a href="{% url 'add_category' %}" class="addCategory">Add Category</a>
 </div>
-
-
+{% endblock %}
 </body>
-</html>

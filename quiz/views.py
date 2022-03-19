@@ -34,11 +34,26 @@ def all_questions(request):
 
 
 def category_detail(request, category_id):
+    quiz_finished = False
     the_category = Category.objects.filter(id=category_id).get()
     category_questions = Question.objects.select_related('category').prefetch_related('answer_set').filter(
         category=the_category)
-    # context = {'the_category': the_category}
-    context = {'the_category': the_category, 'category_questions': category_questions}
+    context = {'the_category': the_category, 'category_questions': category_questions, 'quiz_finished': quiz_finished}
+    if request.method == 'POST':
+        quiz_finished = True
+        user_choices = request.POST.dict()
+        user_choices = [user_choices[str(key)] for key in user_choices if str(key).startswith('choice_')]
+        answer_ids = [str(answer.id) for answer in
+                      Answer.objects.filter(is_answer=True).filter(question__category=the_category.id).all()]
+        right_answers = answer_ids
+        wrong_answers = [answer for answer in user_choices if answer not in right_answers]
+        data = {'right_answers': right_answers, 'wrong_answers': wrong_answers}
+        print(data)
+        result = 100 * (1.0 - (len(wrong_answers) / len(right_answers)))
+        print(f'res:{result}')
+        context = {'the_category': the_category, 'category_questions': category_questions,
+                   'quiz_finished': quiz_finished, 'data': data,
+                   'result': result}
     return render(request, 'quiz/category_detail.html', context=context)
 
 

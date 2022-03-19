@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
+{% block head %}
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/questions.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
     <title>All Questions</title>
 </head>
+{% endblock %}
 <body>
+{% block content %}
 <div class="container">
     {{ data|json_script:"js_1" }}
     <form action="/quiz/all_questions/" method="post">
@@ -36,11 +39,12 @@
         {% endif %}
     </form>
 
-    <a class="addQuestion" href="{% url 'add_question' %}">Add Question</a>
 </div>
 {% if quiz_finished %}
 <div class="result"> Result : {{ result }}%</div>
 {% endif %}
+{% endblock %}
 </body>
+{% block script %}
 <script src="{% static 'quiz/js.js' %}"></script>
-</html>
+{% endblock %}
