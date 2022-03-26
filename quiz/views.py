@@ -107,6 +107,10 @@ def add_question(request):
                     answer.save()
 
     else:
+        categories = Category.objects.all()
+        CATEGORIES = [(category, str(category)) for category in list(categories)]
         form = QuestionForm()
+        # print(form.CATEGORIES)
+
     context = {'form': form}
     return render(request, 'quiz/add_question.html', context=context)
