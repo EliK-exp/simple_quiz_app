@@ -17,12 +17,23 @@ body {
 }
 .container {
   position: relative;
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color:rgba(32,32,32,0.7);
+  border-radius:30px;
+  padding:30px;
+}
+.container form{
+  position: relative;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+    justify-content: space-between;
+
   border-radius:30px;
   padding:30px;
 }
