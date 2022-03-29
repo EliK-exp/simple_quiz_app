@@ -23,5 +23,10 @@ body {
   border-radius: 30px;
   color: aliceblue;
   font-weight: normal;
-  font-size:1.5rem;
+  font-size:1.3rem;
+  transition:0.2s;
+  font-weight: bolder;
+}
+.router:hover{
+  transform:scale(1.2);
 }

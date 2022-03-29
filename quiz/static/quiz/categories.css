@@ -39,6 +39,7 @@ body {
 .container .categoryCard .categoryName {
   position: relative;
   color: aliceblue;
+  font-size:1.2rem;
   font-weight: bolder;
   margin: 5px;
 }

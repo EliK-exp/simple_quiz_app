@@ -29,6 +29,7 @@ nav ul li {
   margin: 20px;
   cursor: pointer;
   transition: 0.3s;
+  opacity:0.6;
 }
 nav ul li a{
   position: relative;
@@ -41,4 +42,5 @@ nav ul li a{
 
 nav ul li:hover {
   transform: translateY(-5px);
+    opacity:1;
 }
