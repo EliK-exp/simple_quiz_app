@@ -10,9 +10,7 @@
 {% endblock %}
 <body>
 {% block content %}
-{% if not quiz_finished %}
-<a href="{% url 'quiz:delete_category' the_category.id %}">Delete "{{ the_category }}" category</a>
-{% endif %}
+
 <div class="container">
     {{ data|json_script:"js_1" }}
     <form action="{% url 'quiz:category_detail' the_category.id %}" method="post">
@@ -25,7 +23,7 @@
                     {% for choice in question.answer_set.all %}
                     <li id="{{ choice.id }}">
                         <label for="choice_{{ choice.id }}">{{ choice.answer_text }}
-                            {{choice.is_answer}}</label>
+                        </label>
                         {% if not quiz_finished %}
                         <input type="radio" id="choice_{{ choice.id }}" name="choice_{{ question }}"
                                value="{{ choice.id }}" required/>
@@ -37,8 +35,14 @@
             </div>
         </div>
         {% endfor %}
+        {% if category_questions.all.count != 0 %}
         {% if not quiz_finished %}
         <input type="submit" value="Submit" id="submit-btn">
+        {% endif %}
+        {% endif %}
+        {% if not quiz_finished %}
+        <a href="{% url 'quiz:delete_category' the_category.id %}" id="delete-btn">Delete "{{ the_category }}"
+            category</a>
         {% endif %}
     </form>
 

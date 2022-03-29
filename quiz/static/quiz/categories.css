@@ -19,36 +19,59 @@ body {
 .container {
   position: relative;
   display: flex;
+  width:60%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top:80px;
+  padding:80px;
+  margin-top:110px;
+  margin-bottom:110px;
+  border-radius:30px;
+  background-color: rgba(29, 27, 27, 0.7);
 }
 .container .categoryCard {
   position: relative;
+  width:80%;
+  height:50px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: rgba(29, 27, 27, 0.507);
-  border-radius: 30px;
+  border-radius: 40px;
   margin: 10px;
-  padding: 20px;
+  padding:20px;
   text-decoration: none;
+  transition:0.3s;
+}
+.container .categoryCard:hover{
+
 }
 .container .categoryCard .categoryName {
   position: relative;
+  left:13%;
   color: aliceblue;
   font-size:1.2rem;
   font-weight: bolder;
   margin: 5px;
+  transition:0.3s;
+}
+.container .categoryCard:hover .categoryName {
+  left:-10%;
 }
 .container .categoryCard p {
   position: relative;
+  left:-10%;
   color: aliceblue;
   font-weight: lighter;
   margin: 5px;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+  opacity:0;
+  transition:0.4s;
+}
+.container .categoryCard:hover p{
+ opacity:1;
+ left:10%;
 }
 .container .addCategory {
   position: fixed;

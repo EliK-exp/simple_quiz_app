@@ -22,7 +22,7 @@
                     {% for choice in question.answer_set.all %}
                     <li id="{{ choice.id }}">
                         <label for="choice_{{ choice.id }}">{{ choice.answer_text }}
-                            {{choice.is_answer}}</label>
+                        </label>
                         {% if not quiz_finished %}
                         <input type="radio" id="choice_{{ choice.id }}" name="choice_{{ question }}"
                                value="{{ choice.id }}" required/>
