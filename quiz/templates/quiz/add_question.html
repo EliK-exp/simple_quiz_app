@@ -11,6 +11,7 @@
 <body>
 {% block content %}
 <div class="container">
+    <p class="hint">NOTE : Add #answer at the end of the right choice(the answer).</p>
     <form action="{% url 'quiz:add_question' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}

@@ -28,6 +28,12 @@ body {
   background-color:rgba(32,32,32,0.7);
   border-radius:30px;
 }
+.container .hint{
+position:relative;
+color:aliceblue;
+font-size:1rem;
+padding:40px;
+}
 .container form{
   position: relative;
   width: 100%;
