@@ -62,4 +62,8 @@ font-size:1rem;
 background-color: rgba(29, 27, 27, 0.7);
 cursor:pointer;
 font-weight: bolder;
+transition:0.2s;
+}
+.container form #submit-btn:hover{
+transform:scale(1.2);
 }
