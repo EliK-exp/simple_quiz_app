@@ -1,3 +1,3 @@
 This is a simple quiz application build using Django web framework. One can add or remove categories and questions(with
-answers) in this app.
+answers) in this app. The debug = True and I haven't changed it to false... 
 Available at https://damp-plateau-86462.herokuapp.com
