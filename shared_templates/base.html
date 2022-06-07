@@ -4,6 +4,8 @@
 {% block head %}
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
     <title>BASE TEMPLATE</title>
 </head>
@@ -11,19 +13,18 @@
 
 <body>
 <nav>
-    <div class="logo">Q-APP</div>
-    <ul>
+    <div class="logo">Q!</div>
+    <ul id="navLinks">
         <li><a href="{% url 'quiz:home' %}">Home</a></li>
-        <li><a href="{% url 'quiz:add_category' %}">Add Category</a></li>
+        <li><a href="{% url 'quiz:all_categories' %}">Categories</a></li>
         <li><a href="{% url 'quiz:add_question' %}">Add Question</a></li>
-        <li><a href="{% url 'quiz:all_questions' %}">All Questions</a></li>
-        <li><a href="{% url 'quiz:all_categories' %}">All Categories</a></li>
-
     </ul>
+    <div id="toggleNavLinks">!</div>
 </nav>
 {% block content %}
 {% endblock %}
-</body>
+<script src="{% static 'quiz/base.js' %}"></script>
 {% block script %}
 {% endblock %}
+</body>
 </html>

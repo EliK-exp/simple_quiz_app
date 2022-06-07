@@ -3,21 +3,24 @@
 {% block head %}
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'quiz/add_question.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
-    <title>Add Question</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/add_question.css' %}">
+    <title>Q!</title>
 </head>
 {% endblock %}
 <body>
 {% block content %}
-<div class="container">
-    <p class="hint">NOTE : Add #answer at the end of the right choice(the answer).</p>
-    <form action="{% url 'quiz:add_question' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" id="submit-btn">
-    </form>
+<div class="introductionContainer">
+    <h1>Create question</h1>
+    <p>In this page you can create your own question and define choices for it. Consider appending "#answer" at the end
+        of the right choice to specify the answer. Note that each question could only have one answer, not more, not
+        less!:)</p>
 </div>
+<form action="{% url 'quiz:add_question' %}" method="post" class="formContainer">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Create Question!" id="submit-btn">
+</form>
 
 {% endblock %}
 </body>

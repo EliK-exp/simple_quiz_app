@@ -3,20 +3,39 @@
 {% block head %}
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'quiz/categories.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/categories.css' %}">
     <title>All Categories</title>
 </head>
 {% endblock %}
 <body>
 {% block content %}
-<div class="container">
-    {% for category in all_categories %}
-    <a href="{% url 'quiz:category_detail' category.id %}" class="categoryCard">
-        <div class="categoryName">{{ category.name }}</div>
-        <p>No. questions: {{ category.question_set.all.count }}</p>
-    </a>
-    {% endfor %}
+<div class="leftContainer">
+    <div class="introductionContainer">
+        <h1>Define your own Category</h1>
+        <p>
+            In this page you can define a category, also you can see a list of
+            available categories.
+        </p>
+    </div>
+    <div class="addCategory">
+        <h1>Add Category :</h1>
+        <form action="{% url 'quiz:add_category' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" id="submitBtn" value="Create Category"/>
+        </form>
+    </div>
+</div>
+<div class="rightContainer">
+    <div class="categoriesContainer">
+        <h1>Click to Go!</h1>
+        {% for category in all_categories %}
+        <div class="category"><a href="{% url 'quiz:category_detail' category.id %}">{{ category.name }}
+            ({{ category.question_set.all.count }})</a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
 </body>

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/questions.css' %}">
+    <title>Q!</title>
+</head>
+{% endblock %}
+<body>
+{% block content %}
+<div class="categoryTitle">{{ the_category }}</div>
+<div class="container">
+    {{ data|json_script:"js_1" }}
+    <form action="{% url 'quiz:category_detail' the_category.id %}" method="post">
+        {% csrf_token %}
+        {% for question in category_questions %}
+        <div class="questionCard">
+            <div class="question">{{ question.question_text }}<span>?</span> ({{ question.category }})</div>
+
+            <ol>
+                {% for choice in question.answer_set.all %}
+                <li id="{{ choice.id }}" class="choice">
+                    <label for="choice_{{ choice.id }}">{{ choice.answer_text }}
+                    </label>
+                    {% if not quiz_finished %}
+                    <input type="radio" id="choice_{{ choice.id }}" name="choice_{{ question }}_{{ question.id }}"
+                           value="{{ choice.id }}" required/>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ol>
+
+        </div>
+        {% endfor %}
+        {% if category_questions.all.count != 0 %}
+        {% if not quiz_finished %}
+        <div class="submitAndResult">
+            <input type="submit" id="submitBtn" value="Check my Answers!">
+        </div>
+        {% endif %}
+        {% if quiz_finished %}
+        <div class="submitAndResult">
+            <div id="result">{{ result }}% of your answers were correct!</div>
+        </div>
+        {% endif %}
+        {% endif %}
+    </form>
+
+</div>
+
+{% endblock %}
+</body>
+{% block script %}
+<script src="{% static 'quiz/js.js' %}"></script>
+{% endblock %}

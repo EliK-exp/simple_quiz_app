@@ -5,13 +5,18 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'quiz/base.css' %}">
-    <title>Home</title>
+    <title>Q!</title>
 </head>
 {% endblock %}
 
 <body>
 {% block content %}
-<a class="router" href="{% url 'quiz:all_categories' %}">Questions Based on Categories</a>
-<a class="router" href="{% url 'quiz:all_questions' %}">All Questions</a>
+
+<div class="introductionContainer">
+    <h1>Take a <span>Q</span>uiz<span>!</span></h1>
+    <p>Here you can test your knowledge regarding different topics like mathematics, chemistry, physics, culture,
+        biology, sports, electronics, programming, etc. <br>Also you can add other categories and add questions as you
+        wish. </p>
+</div>
 {% endblock %}
 </body>

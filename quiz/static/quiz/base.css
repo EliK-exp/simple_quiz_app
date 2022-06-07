@@ -1,20 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, rgb(8, 8, 37), rgb(53, 3, 53));
+  background-image: url("./images/quiz_app_4_cycles.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
 nav {
   position: fixed;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(22, 22, 22, 0.864);
+  background-color: rgba(22, 22, 22, 0);
   width: 100%;
+  height: fit-content;
   top: 0px;
   color: #fff;
-  z-index:1;
+  z-index: 1;
 }
 nav .logo {
   position: relative;
-  padding: 20px;
-  font-size: 1.3rem;
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: 900;
   cursor: pointer;
+  color: rgb(246, 111, 0);
+  transition: 0.2s;
+  text-shadow: 0 0 20px rgba(255, 119, 0, 0.915), 5px -5px 15px rgb(0, 0, 0);
+}
+nav .logo:hover {
+  color: rgb(246, 111, 0);
+  text-shadow: 0 0 50px rgba(255, 119, 0, 0.9);
 }
 nav ul {
   position: relative;
@@ -23,24 +53,57 @@ nav ul {
   align-items: center;
   justify-content: space-evenly;
   list-style: none;
+  transition: 0.3s;
 }
 nav ul li {
   position: relative;
   margin: 20px;
   cursor: pointer;
   transition: 0.3s;
-  opacity:0.6;
+  opacity: 0.6;
+  font-size: 0.8rem;
 }
-nav ul li a{
+nav ul li a {
   position: relative;
   padding: 0px;
   cursor: pointer;
   transition: 0.3s;
-  color:aliceblue;
-  text-decoration:none;
+  color: aliceblue;
+  text-decoration: none;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  padding: 8px;
 }
 
 nav ul li:hover {
-  transform: translateY(-5px);
-    opacity:1;
+  /*transform: translateY(-5px);*/
+  opacity: 1;
+}
+nav ul li:hover a {
+  border-color: rgba(0, 0, 0, 0);
+}
+nav #toggleNavLinks {
+  display: flex;
+  right: 15px;
+  top: 45px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  color: rgb(255, 136, 0);
+  font-size: 1.7rem;
+  font-weight: 700;
+  border-style: solid;
+  border-color: rgb(255, 183, 0);
+  border-width: 1px;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  margin: 10px;
+  display: none;
+  transition: 0.2s;
+  cursor: pointer;
+  opacity: 0;
 }

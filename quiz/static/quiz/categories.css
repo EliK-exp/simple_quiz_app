@@ -1,85 +1,256 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
 body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   min-height: 100vh;
-  background: linear-gradient(45deg, rgb(205, 205, 253), rgb(107, 24, 107));
-  background-attachment: fixed;
-  /*background: white url("images/p2.jpg") no-repeat;*/
+  background: linear-gradient(-45deg, rgb(5, 5, 24), rgb(24, 2, 32),rgb(34, 4, 34), rgb(30, 2, 30));
+  z-index: 0;
 }
-.container {
+.leftContainer{
   position: relative;
+  width: 50%;
+  min-height: 50vh;/* it should be modified */
   display: flex;
-  width:60%;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding:80px;
-  margin-top:110px;
-  margin-bottom:110px;
-  border-radius:30px;
-  background-color: rgba(29, 27, 27, 0.7);
+  justify-content: space-evenly;
 }
-.container .categoryCard {
+.introductionContainer {
   position: relative;
-  width:80%;
-  height:50px;
+  width: 80%;
+  height: fit-content;
+  border-radius: 20px;
+  background-color: rgb(5, 4, 5);
+  /* backdrop-filter: blur(5px); Does not work in firefox from version 70 */
+  /* z-index: 1; */
+}
+
+.introductionContainer::before{
+  content: '';
+  position: absolute;
+  top:0px;
+  left:-1px; 
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: linear-gradient(-45deg, rgb(255, 41, 251), rgb(63, 25, 255),rgb(255, 188, 31),rgb(156, 7, 255));
+  background-size:400% 400%;
+  box-shadow: 0px 0px 45px 5px rgb(0, 0, 0);
+  animation-name: introBack;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  z-index: -1;
+  border-radius: 20px;
+}
+@keyframes introBack {
+  0%{background-position: 0% 0%;}
+  25%{background-position: 0% 50%;}
+  50%{background-position: 0% 100%;}
+  75%{background-position: 50% 100%;}
+  100%{background-position: 100% 100%;}
+}
+.introductionContainer h1 {
+  position: absolute;
+  top: -32px;
+  left:20px;
+  /* backdrop-filter:blur(200px); */
+  letter-spacing: -0.05rem;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  font-weight: 900;
+  /* text-shadow: 0 0 5px rgba(255, 255, 255, 0.803), 5px -5px 15px rgb(0, 0, 0); */
+  z-index: 1;
+  transition: 0.2s;
+}
+.introductionContainer:hover h1{
+  letter-spacing: 0.1rem;
+  /* color: rgb(246, 111, 0); */
+  /* text-shadow: 0 0 5px rgba(246, 111, 0), 5px -5px 15px rgb(0, 0, 0); */
+}
+.introductionContainer p {
+  position: relative;
+  color: rgba(249, 253, 255, 0.916);
+  font-size: 1rem;
+  margin: 20px;
+  text-align: justify;
+  line-height: 1.1rem;
+  font-weight: 600;
+  padding: 20px;
+  margin-top: 22px;
+  margin-bottom: 25px;
+}
+
+.addCategory{
+  position: relative;
+  width: 70%;
+  top: 50px;
+  margin-top: 20px;
+  height: fit-content;
+  border-radius: 20px;
+  background-color: rgb(5, 4, 5);
+  padding: 20px;
+  padding-bottom:40px ;
+  padding-left: 30px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.addCategory:before{
+  content: '';
+  position: absolute;
+  top:1px;
+  left:-1px; 
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
+  background: linear-gradient(-45deg, rgb(255, 41, 251), rgb(63, 25, 255),rgb(255, 188, 31),rgb(156, 7, 255));
+  background-size:400% 400%;
+  box-shadow: 0px 0px 45px 5px rgb(0, 0, 0);
+  animation-name: introBack;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-delay: 1s;
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  z-index: -1;
+  border-radius: 20px;
+}
+.addCategory h1 {
+  position: relative;
+  top: -46px;
+  /* left:20px; */
+  /* backdrop-filter:blur(200px); */
+  letter-spacing: -0.05rem;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  font-weight: 900;
+  /* text-shadow: 0 0 5px rgba(255, 255, 255, 0.803), 5px -5px 15px rgb(0, 0, 0); */
+  z-index: 1;
+  transition: 0.2s;
+}
+.addCategory:hover h1{
+  letter-spacing: 0.1rem;
+  /* color: rgb(246, 111, 0); */
+  /* text-shadow: 0 0 5px rgba(246, 111, 0), 5px -5px 15px rgb(0, 0, 0); */
+}
+.addCategory label{
+  position: relative;
+  color: aliceblue;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.addCategory #id_category_name{
+  position: relative;
+  color: rgb(0, 0, 0);
+  background-color: aliceblue;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 5px;
+  width: 50%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: 0.3s;
+  padding: 5px;
+  margin: 5px;
+  margin-bottom: 20px;
+}
+.addCategory #categoryName:focus{
+  background-color: rgb(217, 214, 201);
+  outline: 0;
+}
+.addCategory #submitBtn{
+  position: relative;
+  background-color: orange;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: black;
+  cursor: pointer;
+  transition: 0.2s;
+  letter-spacing: -0.0rem;
+}
+.addCategory #submitBtn:hover{
+  color: white;
+}
+
+.rightContainer{
+  position: relative;
+  width: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(29, 27, 27, 0.507);
-  border-radius: 40px;
-  margin: 10px;
-  padding:20px;
-  text-decoration: none;
-  transition:0.3s;
 }
-.container .categoryCard:hover{
-
-}
-.container .categoryCard .categoryName {
+.categoriesContainer{
   position: relative;
-  left:13%;
-  color: aliceblue;
-  font-size:1.2rem;
-  font-weight: bolder;
-  margin: 5px;
-  transition:0.3s;
-}
-.container .categoryCard:hover .categoryName {
-  left:-10%;
-}
-.container .categoryCard p {
-  position: relative;
-  left:-10%;
-  color: aliceblue;
-  font-weight: lighter;
-  margin: 5px;
-  font-size: 1.1rem;
-  opacity:0;
-  transition:0.4s;
-}
-.container .categoryCard:hover p{
- opacity:1;
- left:10%;
-}
-.container .addCategory {
-  position: fixed;
-  bottom: 40px;
-  left: 10px;
-  text-decoration: none;
-  background-color: rgba(31, 28, 28, 0.705);
+  display:flex;
+  flex-flow: wrap;
   padding: 20px;
-  border-radius: 30px;
-  color: aliceblue;
+  width: 80%;
+  height: fit-content;
+  border-radius: 20px;
+  background-color: rgb(5, 4, 5);
+  padding: 40px;
+}
+.categoriesContainer:before{
+  content: '';
+  position: absolute;
+  top:1px;
+  left:0px; 
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
+  background: linear-gradient(-45deg, rgb(255, 41, 251), rgb(63, 25, 255),rgb(255, 188, 31),rgb(156, 7, 255));
+  background-size:400% 400%;
+  box-shadow: 0px 0px 45px 5px rgb(0, 0, 0);
+  animation-name: introBack;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-delay: 2s;
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  z-index: -1;
+  border-radius: 20px;
+}
+.categoriesContainer h1 {
+  position: absolute;
+  top: -32px;
+  left:20px;
+  /* backdrop-filter:blur(200px); */
+  letter-spacing: -0.05rem;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  font-weight: 900;
+  /* text-shadow: 0 0 5px rgba(255, 255, 255, 0.803), 5px -5px 15px rgb(0, 0, 0); */
+  z-index: 1;
+  transition: 0.2s;
+}
+.categoriesContainer:hover h1{
+  letter-spacing: 0.1rem;
+  /* color: rgb(246, 111, 0); */
+  /* text-shadow: 0 0 5px rgba(246, 111, 0), 5px -5px 15px rgb(0, 0, 0); */
+}
+.category{
+  position: relative;
+  border-radius: 10px;
+  background-color: rgb(45, 7, 47);
+  margin: 5px;
+  padding: 7px;
+  width: fit-content;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.category a{
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+.category:hover a{
+  color: rgb(0, 0, 0);
 }

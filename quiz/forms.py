@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 
 class CategoryForm(forms.Form):
-    category_name = forms.CharField(label='Category Name ', max_length=100, initial='Remove Me...')
+    category_name = forms.CharField(label='Category Name ', max_length=100, initial='')
 
 
 class QuestionForm(forms.Form):
@@ -16,7 +16,7 @@ class QuestionForm(forms.Form):
     choice_two = forms.CharField(label='Choice 2', max_length=255)
     choice_three = forms.CharField(label='Choice 3', max_length=255)
     choice_four = forms.CharField(label='Choice 4', max_length=255)
-    category = forms.ModelChoiceField(queryset=categories)
+    category = forms.ModelChoiceField(label='Select the Category :', queryset=categories)
 
     # Check if there is only one answer, not less not more! Also checks if a field contains just #answer and raise an exception.
     def clean(self):

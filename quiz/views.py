@@ -11,7 +11,18 @@ def home(request):
 
 def all_categories(request):
     categories = Category.objects.prefetch_related('question_set').all()
-    context = {'all_categories': categories}
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            print('form cleaned data: ')
+            print(form.cleaned_data)
+            form_data = form.cleaned_data
+            the_new_category = Category(name=form_data['category_name'])
+            the_new_category.save()
+            return redirect('quiz:all_categories')
+    else:
+        form = CategoryForm()
+    context = {'current_value': 'type here', 'form': form, 'all_categories': categories}
     return render(request, 'quiz/all_categories.html', context=context)
 
 
@@ -54,7 +65,7 @@ def category_detail(request, category_id):
         context = {'the_category': the_category, 'category_questions': category_questions,
                    'quiz_finished': quiz_finished, 'data': data,
                    'result': result}
-    return render(request, 'quiz/category_detail.html', context=context)
+    return render(request, 'quiz/questions.html', context=context)
 
 
 def delete_category(request, category_id):
@@ -105,7 +116,7 @@ def add_question(request):
                         answer.is_answer = False
                         answer.question = new_question
                     answer.save()
-
+            return  render(request, 'quiz/question_created_successfully.html')
     else:
         categories = Category.objects.all()
         CATEGORIES = [(category, str(category)) for category in list(categories)]
