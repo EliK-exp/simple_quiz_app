@@ -1,0 +1,257 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, rgb(8, 8, 37), rgb(15, 6, 24),rgb(20, 6, 26), rgb(34, 2, 34));
+  background-attachment: fixed;
+  z-index: 0;
+}
+.categoryTitle{
+  position: relative;
+  color: aliceblue;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.1;
+  margin-top: 160px;
+}
+.container{
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-bottom:50px;
+}
+
+.container form{
+  position: relative;
+  display:flex;
+  flex-flow: wrap;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+.questionCard:nth-child(4n+1) {
+  position: relative;
+  width: fit-content;
+  max-width: 90%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: rgb(0, 0, 0);
+  padding: 40px;
+  margin:20px;
+  /* backdrop-filter: blur(5px); Does not work in firefox from version 70 */
+  /* z-index: 1; */
+}
+
+.questionCard:nth-child(4n+1)::before{
+  content: '';
+  position: absolute;
+  top:-2px;
+  left:-1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: linear-gradient(-45deg, rgb(255, 41, 251), rgb(47, 31, 130),rgb(156, 7, 255));
+  background-size:400% 400%;
+  box-shadow: 0px 0px 45px 5px rgb(0, 0, 0);
+  animation-name: introBack;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-delay: 1s;
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  z-index: -1;
+  border-radius: 20px;
+}
+.questionCard:nth-child(4n+2) {
+  position: relative;
+  width: fit-content;
+  max-width: 90%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: rgb(8, 7, 8);
+  padding: 40px;
+  margin:20px;
+  /* backdrop-filter: blur(5px); Does not work in firefox from version 70 */
+  /* z-index: 1; */
+}
+
+.questionCard:nth-child(4n+2)::before{
+  content: '';
+  position: absolute;
+  top:-1px;
+  left:0px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: linear-gradient(-45deg, rgb(255, 41, 251), rgb(47, 31, 130),rgb(156, 7, 255));
+  background-size:400% 400%;
+  box-shadow: 0px 0px 45px 5px rgb(0, 0, 0);
+  animation-name: introBack;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-delay: 2s;
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  z-index: -1;
+  border-radius: 20px;
+}
+.questionCard:nth-child(4n+3) {
+  position: relative;
+  width: fit-content;
+  max-width: 90%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: rgb(6, 5, 6);
+  padding: 40px;
+  margin:20px;
+  /* backdrop-filter: blur(5px); Does not work in firefox from version 70 */
+  /* z-index: 1; */
+}
+
+.questionCard:nth-child(4n+3)::before{
+  content: '';
+  position: absolute;
+  top:0px;
+  left:-1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: linear-gradient(-45deg, rgb(255, 41, 251), rgb(47, 31, 130),rgb(156, 7, 255));
+  background-size:400% 400%;
+  box-shadow: 0px 0px 45px 5px rgb(0, 0, 0);
+  animation-name: introBack;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-delay: 3s;
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  z-index: -1;
+  border-radius: 20px;
+}
+.questionCard:nth-child(4n) {
+  position: relative;
+  width: fit-content;
+  max-width: 90%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: rgb(10, 9, 10);
+  padding: 40px;
+  margin:20px;
+  /* backdrop-filter: blur(5px); Does not work in firefox from version 70 */
+  /* z-index: 1; */
+}
+
+.questionCard:nth-child(4n)::before{
+  content: '';
+  position: absolute;
+  top:-1px;
+  left:-2px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: linear-gradient(-45deg, rgb(255, 41, 251), rgb(47, 31, 130),rgb(156, 7, 255));
+  background-size:400% 400%;
+  box-shadow: 0px 0px 45px 5px rgb(0, 0, 0);
+  animation-name: introBack;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-delay: 4s;
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  z-index: -1;
+  border-radius: 20px;
+}
+@keyframes introBack {
+  0%{background-position: 0% 0%;}
+  25%{background-position: 0% 50%;}
+  50%{background-position: 0% 100%;}
+  75%{background-position: 50% 100%;}
+  100%{background-position: 100% 100%;}
+}
+.questionCard:hover .question span{
+  color: rgb(140, 23, 125);
+}
+.questionCard .question{
+  position: relative;
+  color: aliceblue;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.questionCard .question span{
+  position: relative;
+  color: orange;
+  font-size: 1.15rem;
+  transition: 0.2s;
+}
+.questionCard .choice{
+  position: relative;
+  color: aliceblue;
+  margin-top: 5px;
+  margin-left: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width:fit-content;
+}
+.submitAndResult{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submitAndResult #submitBtn{
+  position: relative;
+  color: #fff;
+  background-color: rgb(253, 156, 0);
+  width: fit-content;
+  padding: 15px;
+  margin: 70px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.1rem;
+  outline: none;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 0px;
+  transition: 0.2s;
+}
+.submitAndResult #submitBtn:hover{
+  color: black;
+}
+.submitAndResult #result{
+  position:relative;
+  background-color: orange;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 40px;
+  padding: 15px;
+  border-radius: 10px;
+  letter-spacing: -0.1rem;
+  color: aliceblue;
+  transition: 0.2s;
+}
+.submitAndResult #result:hover{
+  color: black;
+}
