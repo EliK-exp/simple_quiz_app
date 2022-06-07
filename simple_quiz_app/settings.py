@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-jam3m-1awg)bst0r$6m5n$xm56d-$bf!gh44cs3*w#s$h*c0uq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['quiz-app-elias.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -43,7 +43,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,11 +131,3 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
-import dj_database_url
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
-import django_heroku
-
-django_heroku.settings(locals())
