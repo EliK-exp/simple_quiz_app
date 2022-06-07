@@ -1,8 +1,3 @@
 /venv/
 /.idea/
-manage.py
-simple_quiz_app/__init__.py
-simple_quiz_app/asgi.py
-simple_quiz_app/wsgi.py
-simple_quiz_app/settings.py
 db.sqlite3
