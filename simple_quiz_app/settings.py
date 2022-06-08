@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-jam3m-1awg)bst0r$6m5n$xm56d-$bf!gh44cs3*w#s$h*c0uq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['quiz-app-elyas.fandogh.cloud']
+ALLOWED_HOSTS = ['quiz-app-elyas.fandogh.cloud','127.0.0.1']
 
 # Application definition
 
@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'quiz',
-    'debug_toolbar',
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -126,8 +126,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'core.AppUser'
 
-INTERNAL_IPS = [
-    # ...
-    "127.0.0.1",
-    # ...
-]
+# INTERNAL_IPS = [
+#     # ...
+#     "127.0.0.1",
+#     # ...
+# ]
+
+CSRF_TRUSTED_ORIGINS = ['https://quiz-app-elyas.fandogh.cloud']
